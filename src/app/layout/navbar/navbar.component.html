@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <a class="navbar-brand" href="#">
+    <img id="brand-logo" src="../assets/wheel.png" alt="Atos">
+    <span id="app-title">
+      Concesionaria promedio
+    </span>
+  </a>
+
+
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    &#9776;
+  </button>
+
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarNav">
+    <!-- <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['candidates']">Candidates</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['surveys']">Surveys</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['administration']">Administration</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['security', 'roles']">Security</a>
+      </li>
+    </ul> -->
+
+    <ul class="navbar-nav ml-auto navbar-btn-user ">
+      <li class="nav-item d-flex align-items-center">
+        <span id="user-name">Jonathan Magnone</span>
+      </li>
+      <li class="nav-item">
+        <span style="padding-left: 10px;"></span>
+      </li>
+      <li class="nav-item">
+        <span id="user-profile" class="fa fa-user-circle"></span>
+      </li>
+    </ul>
+  </div>
+
+</nav>
