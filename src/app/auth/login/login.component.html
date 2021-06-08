@@ -1,18 +1,35 @@
+<div class="row mb-2 justify-content-md-center">
+  <h3>
+    Bienvenido!
+  </h3>
+</div>
+<br>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
-    <div class="form-group row justify-content-md-center">
-        <label for="email" class="col-sm-1 col-form-label" >Email</label>
-        <div class="col-sm-4">
-          <input type="email" class="form-control" id="email" formControlName="email">
-        </div>
-      </div>
-      <div class="form-group row justify-content-md-center">
-        <label for="password" class="col-sm-1 col-form-label">Password</label>
-        <div class="col-sm-4">
-          <input type="password" class="form-control" id="password" formControlName="password">
-        </div>
-      </div>
 
-  <div class="row justify-content-md-center mx-3">
-    <button type="submit" class="col-sm-5 btn btn-dark btn-block">Enviar</button>
+  <div class="form-group row justify-content-md-center">
+    <div class="input-group col-sm-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <span><i class="fa fa-at"></i></span>
+        </div>
+      </div>
+      <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+    </div>
   </div>
+
+  <div class="form-group row justify-content-md-center">
+    <div class="input-group col-sm-4">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <span><i class="fa fa-key"></i></span>
+        </div>
+      </div>
+      <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+    </div>
+  </div>
+
+  <div class="m-4 row justify-content-md-center">
+    <button type="submit" class="col-sm-4 btn btn-dark btn-block">Enviar</button>
+  </div>
+
 </form>
