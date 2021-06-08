@@ -14,7 +14,7 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>Usuario</th>
+              <th>Email</th>
               <th>Nombre/s</th>
               <th>Apellido/s</th>
               <th>Rol</th>
@@ -24,7 +24,7 @@
           <tbody>
             <tr *ngFor="let user of users">
               <td>{{ user.id }}</td>
-              <td>{{ user.user }}</td>
+              <td>{{ user.email }}</td>
               <td>{{ user.firstName }}</td>
               <td>{{ user.lastName }}</td>
               <td>{{ user.roleId }}</td>

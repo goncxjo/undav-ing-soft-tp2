@@ -1,19 +1,115 @@
 {
-  "surveys" : [
-    { "id": 1, "name": "Tatiana", "surname": "Della Fanta", "age": 27, "phone": "+54 (011) 2222-3333", "email": "edellafanta@fakemail.com", "otherPhone": "", "vehicles": ["car"], "createdDate": "2021-06-05T14:36:40.613Z", "modifiedDate": "" },
-    { "id": 2, "name": "Dora", "surname": "Gonzalez", "age": 55, "phone": "+54 (011) 2222-3334", "email": "", "otherPhone": "", "vehicles": [], "createdDate": "2021-06-05T14:36:40.613Z", "modifiedDate": "" },
-    { "id": 3, "name": "Nani", "surname": "Pakinov", "age": 30, "phone": "+54 (011) 2222-3335", "email": "nikolaipakinov@fakemail.com", "otherPhone": "3333-5555", "vehicles": ["car", "van"], "createdDate": "2021-06-05T14:36:40.613Z", "modifiedDate": "" },
-    { "id": 4, "name": "Fernan", "surname": "Motola", "age": 22, "phone": "+54 (011) 2222-3336", "email": "fer.motola@fakemail.com", "otherPhone": "", "vehicles": ["car", "motorcycle"], "createdDate": "2021-06-05T14:36:40.613Z", "modifiedDate": "" },
-    { "id": 5, "name": "Marie", "surname": "Villalfalfa", "age": 29, "phone": "+54 (011) 2222-3337", "email": "marie.vill@fakemail.com", "otherPhone": "", "vehicles": [], "createdDate": "2021-06-05T14:36:40.613Z", "modifiedDate": "" }
+  "surveys": [
+    {
+      "id": 1,
+      "name": "Tatiana",
+      "surname": "Della Fanta",
+      "age": 27,
+      "phone": "+54 (011) 2222-3333",
+      "email": "edellafanta@fakemail.com",
+      "otherPhone": "",
+      "vehicles": [
+        "car"
+      ],
+      "createdDate": "2021-06-05T14:36:40.613Z",
+      "modifiedDate": ""
+    },
+    {
+      "id": 2,
+      "name": "Dora",
+      "surname": "Gonzalez",
+      "age": 55,
+      "phone": "+54 (011) 2222-3334",
+      "email": "",
+      "otherPhone": "",
+      "vehicles": [],
+      "createdDate": "2021-06-05T14:36:40.613Z",
+      "modifiedDate": ""
+    },
+    {
+      "id": 3,
+      "name": "Nani",
+      "surname": "Pakinov",
+      "age": 30,
+      "phone": "+54 (011) 2222-3335",
+      "email": "nikolaipakinov@fakemail.com",
+      "otherPhone": "3333-5555",
+      "vehicles": [
+        "car",
+        "van"
+      ],
+      "createdDate": "2021-06-05T14:36:40.613Z",
+      "modifiedDate": ""
+    },
+    {
+      "id": 4,
+      "name": "Fernan",
+      "surname": "Motola",
+      "age": 22,
+      "phone": "+54 (011) 2222-3336",
+      "email": "fer.motola@fakemail.com",
+      "otherPhone": "",
+      "vehicles": [
+        "car",
+        "motorcycle"
+      ],
+      "createdDate": "2021-06-05T14:36:40.613Z",
+      "modifiedDate": ""
+    },
+    {
+      "id": 5,
+      "name": "Marie",
+      "surname": "Villalfalfa",
+      "age": 29,
+      "phone": "+54 (011) 2222-3337",
+      "email": "marie.vill@fakemail.com",
+      "otherPhone": "",
+      "vehicles": [],
+      "createdDate": "2021-06-05T14:36:40.613Z",
+      "modifiedDate": ""
+    }
   ],
   "roles": [
-    { "id": 1, "name": "Administrador", "details": "Tiene todos los permisos"},
-    { "id": 2, "name": "Encuestador", "details": "Puede agregar, editar o eliminar encuestas"},
-    { "id": 3, "name": "Analista", "details": "Puede generar reportes"}
+    {
+      "id": 1,
+      "name": "Administrador",
+      "details": "Tiene todos los permisos"
+    },
+    {
+      "id": 2,
+      "name": "Encuestador",
+      "details": "Puede agregar, editar o eliminar encuestas"
+    },
+    {
+      "id": 3,
+      "name": "Analista",
+      "details": "Puede generar reportes"
+    }
   ],
   "users": [
-    { "id": 1, "user": "GMOREIRA", "firstName": "Gonzalo", "lastName": "Moreira", "roleId": 1 },
-    { "id": 2, "user": "CLICCIARDELLO", "firstName": "Cristian", "lastName": "Licciardello", "roleId": 1 },
-    { "id": 3, "user": "JMAGNONE", "firstName": "Jonathan", "lastName": "Magnone", "roleId": 1 }
+    {
+      "email": "gmoreira@undav-soluciones.com.ar",
+      "password": "$2a$10$D7rs.8X8Dk3TlVNVVbnsgOzFtBvVLhFgRZVPJq3xF0F2IlWKIyyHu",
+      "id": 1,
+      "firstName": "Gonzalo",
+      "lastName": "Moreira",
+      "roleId": 1
+    },
+    {
+      "email": "clicciardello@undav-soluciones.com.ar",
+      "password": "$2a$10$xLB9aGRzl/rkMXqoDElfN./3ZoHtBakq.fk/hddk.YsJwCF8izuwK",
+      "id": 2,
+      "firstName": "Cristian",
+      "lastName": "Licciardello",
+      "roleId": 1
+    },
+    {
+      "email": "jmagnone@undav-soluciones.com.ar",
+      "password": "$2a$10$C7gWFjE6G2cFKghlHGK8AuohZNbbr4sQHrbavgOGaGJn5TEgDuJQO",
+      "id": 3,
+      "firstName": "Jonathan",
+      "lastName": "Magnone",
+      "roleId": 1
+    }
   ]
 }
