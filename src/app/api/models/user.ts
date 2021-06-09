@@ -1,10 +1,7 @@
 import { Role } from "./role";
+import { UserMiniList } from "./user-mini-list";
 
-export interface User {
-    id: number;
-    user: string;
-    firstName: string;
-    lastName: string;
-    // role: Role;
+export class User extends UserMiniList {
+    password: string;
+    role: Role;
   }
-  

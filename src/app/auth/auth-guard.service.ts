@@ -7,13 +7,13 @@ import { ToastrService } from 'ngx-toastr';
 export class AuthGuardService implements CanActivate {
   
   constructor(
-    public auth: AuthService,
+    public authService: AuthService,
     public router: Router,
     private toastr: ToastrService
   ) {}
 
   canActivate(): boolean {
-    if (!this.auth.isAuthenticated()) {
+    if (!this.authService.isAuthenticated()) {
       this.toastr.error('La sesión ha caducado.', 'Error');
       this.router.navigate(['login']);
       return false;

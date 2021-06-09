@@ -25,4 +25,9 @@ export class UsersService {
     const url = `${this.baseRoute}/${id}`
     return this.http.get<User>(url);
   }
+
+  getUsersByEmail(email): Observable<User> {
+    const url = `${this.baseRoute}?email=${email}`
+    return this.http.get<User>(url);
+  }
 }

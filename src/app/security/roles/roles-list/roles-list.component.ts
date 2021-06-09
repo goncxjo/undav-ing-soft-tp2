@@ -13,13 +13,14 @@ export class RolesListComponent implements OnInit {
   collectionSize: number;
   ROLES: Role[]
   roles: Role[]
+  private subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe((data: { entity: Role[] }) => {
+    this.subscription = this.activatedRoute.data.subscribe((data: { entity: Role[] }) => {
       this.ROLES = data.entity;
       this.collectionSize = this.ROLES.length;
       this.refreshRoles();
@@ -34,5 +35,9 @@ export class RolesListComponent implements OnInit {
     this.roles = this.ROLES
       .map((role, i) => ({id: i + 1, ...role}))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
+
+  ngOnDestroy() {
+    this.subscription.forEach((subscription) => subscription.unsubscribe())
   }
 }

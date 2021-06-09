@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/api/models/User';
+import { UserList } from 'src/app/api/models/user-list';
 
 @Component({
   selector: 'app-users-list',
@@ -11,15 +11,16 @@ export class UsersListComponent implements OnInit {
   page = 1;
   pageSize = 5;
   collectionSize: number;
-  USERS: User[]
-  users: User[]
+  USERS: UserList[]
+  users: UserList[]
+  private subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe((data: { entity: User[] }) => {
+    this.subscription = this.activatedRoute.data.subscribe((data: { entity: UserList[] }) => {
       this.USERS = data.entity;
       this.collectionSize = this.USERS.length;
       this.refreshUsers();
@@ -34,5 +35,9 @@ export class UsersListComponent implements OnInit {
     this.users = this.USERS
       .map((user, i) => ({id: i + 1, ...user}))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
+
+  ngOnDestroy() {
+    this.subscription.forEach((subscription) => subscription.unsubscribe())
   }
 }

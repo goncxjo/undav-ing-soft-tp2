@@ -16,14 +16,12 @@ import { SecurityModule } from './security/security.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { LogoutComponent } from './auth/logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    LogoutComponent,
   ],
   imports: [
     HttpClientModule,

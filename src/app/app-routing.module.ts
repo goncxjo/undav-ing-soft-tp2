@@ -7,7 +7,6 @@ import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'logout', component: LoginComponent },  // TODO: mejorar esto
   // {
   //   path: 'surveys',
   //   loadChildren: () => import('./surveys/surveys.module').then(m => m.SurveysModule),
