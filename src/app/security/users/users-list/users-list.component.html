@@ -50,6 +50,11 @@
     <div class="col">
       <div class="d-flex justify-content-between p-2">
         <div>
+          <button class="btn btn-xs btn-primary" [routerLink]="['/security']">
+            <span class="fa fa-arrow-left"></span> Volver
+          </button>
+        </div>
+        <div>
           <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshRoles()"></ngb-pagination>
         </div>
         <div>

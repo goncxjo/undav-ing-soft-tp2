@@ -16,8 +16,13 @@
 
     <ul class="navbar-nav ml-auto navbar-btn-user" *ngIf="isAuthorized">
 
-      <li class="nav-item d-flex align-items-center">
-        <span id="user-name">{{ user.fullName() }}</span>
+      <li class="nav-item dropdown d-flex align-items-center">
+          <a class="nav-item nav-link dropdown-toggle navbar-user-full-name" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ user.fullName() }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" (click)="logout()">Salir</a>
+          </div>
       </li>
 
       <li class="nav-item"><span id="user-separator"></span></li>
@@ -25,16 +30,7 @@
       <li class="nav-item">
         <img id="user-profile" src="{{ user.profilePicture() }}" alt="{{ user.email }}">
       </li>
-
-      <li class="nav-item"><span id="user-separator"></span></li>
-
-      <li class="nav-item">
-        <a id="user-logout" class="nav-link" (click)="logout()">
-          <span ><i class="fa fa-sign-out-alt"></i></span>
-        </a>
-      </li>
-
-
+      
     </ul>
   </div>
 

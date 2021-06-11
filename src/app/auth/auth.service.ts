@@ -109,6 +109,6 @@ export class AuthService {
   }
  
   ngOnDestroy() {
-    this.subscription.forEach((subscription) => subscription.unsubscribe())
+    this.subscription.unsubscribe();
   }
 }

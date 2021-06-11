@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription.forEach((subscription) => subscription.unsubscribe())
+    this.subscription.unsubscribe();
   }
 
   logout() {
