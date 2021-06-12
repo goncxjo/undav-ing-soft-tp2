@@ -16,11 +16,11 @@ export class UserBasicData {
       }
     }
 
-    fullName() {
+    fullName(): string {
       return `${this.firstName} ${this.lastName}`;
     }
 
-    profilePicture() {
+    profilePicture(): string {
       const size = 128;
       const md5 = new Md5();
       let digest = md5.appendStr(this.email.toLowerCase());

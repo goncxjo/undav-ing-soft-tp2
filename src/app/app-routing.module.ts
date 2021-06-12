@@ -16,8 +16,11 @@ const routes: Routes = [
     path: 'security',
     loadChildren: () => import('./security/security.module').then(m => m.SecurityModule),
   },
+  { 
+    path: 'reports',
+    loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule),
+  },
   { path: 'admin', redirectTo: '/', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'reports', redirectTo: '/', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 

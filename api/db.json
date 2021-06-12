@@ -8,9 +8,7 @@
       "phone": "+54 (011) 2222-3333",
       "email": "edellafanta@fakemail.com",
       "otherPhone": "",
-      "vehicles": [
-        "car"
-      ],
+      "vehicles": [2],
       "createdDate": "2021-06-05T14:36:40.613Z",
       "modifiedDate": ""
     },
@@ -34,10 +32,7 @@
       "phone": "+54 (011) 2222-3335",
       "email": "nikolaipakinov@fakemail.com",
       "otherPhone": "3333-5555",
-      "vehicles": [
-        "car",
-        "van"
-      ],
+      "vehicles": [2,3],
       "createdDate": "2021-06-05T14:36:40.613Z",
       "modifiedDate": ""
     },
@@ -49,10 +44,7 @@
       "phone": "+54 (011) 2222-3336",
       "email": "fer.motola@fakemail.com",
       "otherPhone": "",
-      "vehicles": [
-        "car",
-        "motorcycle"
-      ],
+      "vehicles": [2,1],
       "createdDate": "2021-06-05T14:36:40.613Z",
       "modifiedDate": ""
     },
