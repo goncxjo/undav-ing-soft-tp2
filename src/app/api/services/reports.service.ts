@@ -20,6 +20,7 @@ export class ReportsService {
 
     let report = new Report();
     report.potentialCustomers = _.filter(data, (s: any) => this.filterSurveys(s));
+    report.notPotentialCustomers = _.filter(data, (s: any) => !this.filterSurveys(s));
     report.count = report.potentialCustomers.length;
 
     return report;

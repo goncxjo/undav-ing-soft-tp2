@@ -11,3 +11,28 @@
     </button>
   </div>
 </div>
+
+<br>
+
+<div class="row" *ngIf="!noData">
+  <div class="card col-md-6">
+    <div class="card-body text-center">
+      <h5>Total de potenciales clientes</h5>
+      <h1>{{ results[0].value + ' de ' + (results[0].value + results[1].value) }}</h1>
+      <h5>encuestas realizadas</h5>
+    </div>
+  </div>
+  <div class="card col-md-6">
+    <div class="card-body">
+      <ngx-charts-pie-chart
+      [view]="view"
+      [results]="results"
+      [legendPosition]="legendPosition"
+      [labels]="showLabels"
+      [doughnut]="isDoughnut"
+    >
+    </ngx-charts-pie-chart>
+    </div>
+  </div>
+
+</div>
