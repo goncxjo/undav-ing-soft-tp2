@@ -18,21 +18,53 @@
   <div class="card col-md-6">
     <div class="card-body text-center">
       <h5>Total de potenciales clientes</h5>
-      <h1>{{ results[0].value + ' de ' + (results[0].value + results[1].value) }}</h1>
+      <h1>{{ results.potenciales[0].value + ' de ' + (results.potenciales[0].value + results.potenciales[1].value) }}</h1>
       <h5>encuestas realizadas</h5>
     </div>
   </div>
   <div class="card col-md-6">
     <div class="card-body">
-      <ngx-charts-pie-chart
+      <ngx-charts-bar-horizontal
+      (window:resize)="onResize($event)"
+      [results]="results.potenciales"
       [view]="view"
-      [results]="results"
-      [legendPosition]="legendPosition"
-      [labels]="showLabels"
-      [doughnut]="isDoughnut"
+      [scheme]="colorScheme"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
     >
-    </ngx-charts-pie-chart>
+    </ngx-charts-bar-horizontal>
     </div>
   </div>
+</div>
 
+<br>
+
+<div class="row" *ngIf="!noData">
+  <div class="card col-md-6">
+    <div class="card-body text-center">
+      <h5>Total vehiculos de potenciales clientes</h5>
+      <!-- <h1>{{ results.vehiculos[0].value + ' de ' + (results[0].value + results[1].value) }}</h1> -->
+    </div>
+  </div>
+  <div class="card col-md-6">
+    <div class="card-body">
+      <ngx-charts-bar-horizontal-normalized
+      (window:resize)="onResize($event)"
+      [results]="results.vehiculos"
+      [view]="view"
+      [scheme]="colorScheme"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="xAxisLabelVehiculos"
+      [yAxisLabel]="yAxisLabelVehiculos"
+      >
+    </ngx-charts-bar-horizontal-normalized>
+    </div>
+  </div>
 </div>

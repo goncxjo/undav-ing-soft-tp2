@@ -19,18 +19,16 @@ export class ReportsService {
     let data = await this.surveyService.getSurveysAsPromise()
 
     let report = new Report();
-    report.potentialCustomers = _.filter(data, (s: any) => this.filterSurveys(s));
-    report.notPotentialCustomers = _.filter(data, (s: any) => !this.filterSurveys(s));
-    report.count = report.potentialCustomers.length;
+    const surveys = _.map(data, (s: any) => new Survey(s));
+    
+    report.potentialCustomers = _.filter(surveys, s => s.isPotentialCustomer());
+    report.notPotentialCustomers = _.filter(surveys, s => !s.isPotentialCustomer());
+    console.log(surveys);
+    console.log(report);
 
     return report;
   }
 
-  private filterSurveys(s: any): boolean {
-    const s_ = new Survey(s);
-    return s_.isPotentialCustomer()
-  }
-  
   private onError(err): void {
     console.log(err);
   }

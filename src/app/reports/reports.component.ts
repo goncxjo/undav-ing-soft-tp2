@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { Report } from '../api/models/report';
 import { ReportsService } from '../api/services/reports.service';
-import { Observable } from 'rxjs';
 import * as _ from 'lodash';
-import { Survey } from '../api/models/survey';
 
 @Component({
   selector: 'app-reports',
@@ -12,26 +9,37 @@ import { Survey } from '../api/models/survey';
   styleUrls: ['./reports.component.sass']
 })
 export class ReportsComponent implements OnInit {
-  subscription: Subscription;
   report: Report;
-  report_: Observable<Report>;
-  noData: boolean;
-
-  results: any[];
+  noData: boolean = false;
   view: any[];
+  results;
 
   // options
-  gradient: boolean = true;
-  showLegend: boolean = true;
-  showLabels: boolean = true;
-  isDoughnut: boolean = false;
+  yAxisLabel: string = 'Clientes';
+  xAxisLabel: string = 'Cantidad';
+  yAxisLabelVehiculos: string = 'Vehiculos';
+  xAxisLabelVehiculos: string = 'Cantidad';
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
 
   constructor(
     private reportService: ReportsService
   ) { 
-    this.view = [500, 400];
-    this.results = []
+    this.calculateDimension(innerWidth);
+    this.initReportModel();
     this.noData = true;
+  }
+
+  private initReportModel() {
+    this.results = {
+      potenciales: [],
+      vehiculos: [],
+    };
+  }
+
+  calculateDimension(innerWidth) {
+    this.view = [ innerWidth / 3.2, 150 ];
   }
 
   ngOnInit() {
@@ -39,19 +47,54 @@ export class ReportsComponent implements OnInit {
 
   getReport() {
      this.reportService.getReport()
-     .then(data => {
-       let results = [];
-       results.push({ name: "Pot. Clientes", value: data.totalPotentialCustomers() });
-       results.push({ name: "Otros", value: data.totalNotPotentialCustomers() });
-       
-       this.report = data;
-       this.noData = data.total() == 0;
-       Object.assign(this.results, results);
+     .then((data: Report) => {
+        this.initReportModel();
+        let results = this.results;
+        
+        results.potenciales.push({ name: "Potenciales", value: data.potentialCustomers.length });
+        results.potenciales.push({ name: "No cumplen", value: data.notPotentialCustomers.length });
+        
+        results.vehiculos.push({ name: "Motocicleta", series: this.getSeriesMotocicleta(data) });
+        results.vehiculos.push({ name: "Auto", series: this.getSeriesAuto(data) });
+        results.vehiculos.push({ name: "Camioneta", series: this.getSeriesCamioneta(data) });
+        
+        console.log('component',results);
+        this.report = data;
+        this.noData = data.total() == 0;
+        Object.assign(this.results, results);
      })
      .catch(err => console.log(err));
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  // TODO: mejorar esto
+  getSeriesCamioneta(data: Report) {
+    const potenciales = _.filter(data.potentialCustomers, s => s.hasVan());
+    const otros = _.filter(data.notPotentialCustomers, s => s.hasVan());
+    return [
+      { name: "potenciales clientes", value: potenciales.length },
+      { name: "no cumplen", value: otros.length }
+    ];
+  }
+
+  getSeriesAuto(data: Report) {
+    const potenciales = _.filter(data.potentialCustomers, s => s.hasCar());
+    const otros = _.filter(data.notPotentialCustomers, s => s.hasCar());
+    return [
+      { name: "potenciales clientes", value: potenciales.length },
+      { name: "no cumplen", value: otros.length }
+    ];
+  }
+  getSeriesMotocicleta(data: Report) {
+    const potenciales = _.filter(data.potentialCustomers, s => s.hasMotorcycle());
+    const otros = _.filter(data.notPotentialCustomers, s => s.hasMotorcycle());
+    return [
+      { name: "potenciales clientes", value: potenciales.length },
+      { name: "no cumplen", value: otros.length }
+    ];
+  }
+
+  // view is the variable used to change the chart size (Ex: view = [width, height])
+  onResize(event) {
+    this.calculateDimension(event.target.innerWidth);
   }
 }

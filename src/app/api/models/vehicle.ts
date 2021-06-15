@@ -1,5 +1,5 @@
 export enum Vehicle {
-    Motorcycle,
+    Motorcycle = 1,
     Car,
     Van
 }

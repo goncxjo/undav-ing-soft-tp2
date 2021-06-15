@@ -11,14 +11,6 @@ export class Report {
     }
 
     total(): number {
-        return this.totalPotentialCustomers() + this.totalNotPotentialCustomers()
-    }
-
-    totalPotentialCustomers(): number {
-        return this.potentialCustomers.length;
-    }
-
-    totalNotPotentialCustomers(): number {
-        return this.notPotentialCustomers.length;
-    }
+        return this.potentialCustomers.length + this.notPotentialCustomers.length;
+    }    
 }

@@ -20,7 +20,7 @@
       "phone": "+54 (011) 2222-3334",
       "email": "",
       "otherPhone": "",
-      "vehicles": [],
+      "vehicles": [1,2,3],
       "createdDate": "2021-06-05T14:36:40.613Z",
       "modifiedDate": ""
     },
@@ -52,11 +52,23 @@
       "id": 5,
       "name": "Marie",
       "surname": "Villalfalfa",
-      "age": 29,
+      "age": 26,
       "phone": "+54 (011) 2222-3337",
       "email": "marie.vill@fakemail.com",
       "otherPhone": "",
       "vehicles": [],
+      "createdDate": "2021-06-05T14:36:40.613Z",
+      "modifiedDate": ""
+    },
+    {
+      "id": 6,
+      "name": "Adam",
+      "surname": "Nieczyporuk",
+      "age": 27,
+      "phone": "+54 (011) 2222-3338",
+      "email": "a.nieczy@fakemail.com",
+      "otherPhone": "",
+      "vehicles": [1,3],
       "createdDate": "2021-06-05T14:36:40.613Z",
       "modifiedDate": ""
     }

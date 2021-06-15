@@ -30,6 +30,18 @@ export class Survey {
         return this.vehicles.length > 0;   
     }
 
+    hasMotorcycle(): boolean {
+        return this.vehicles.includes(Vehicle.Motorcycle);   
+    }
+
+    hasCar(): boolean {
+        return this.vehicles.includes(Vehicle.Car);   
+    }
+
+    hasVan(): boolean {
+        return this.vehicles.includes(Vehicle.Van);   
+    }
+
     hasRequiredAge(): boolean {
         return 25 <= this.age && this.age <= 50;
     }
