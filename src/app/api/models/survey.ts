@@ -11,8 +11,8 @@ export class Survey {
         this.email = rawSurvey.email;
         this.otherPhone = rawSurvey.otherPhone;
         this.vehicles = rawSurvey.vehicles;
-        this.createdDate = rawSurvey.createdDate;
-        this.modifiedDate = rawSurvey.modifiedDate;
+        this.createdDate = new Date(rawSurvey.createdDate || new Date());
+        this.modifiedDate = new Date(rawSurvey.modifiedDate || new Date());
     }
 
     id: 1;

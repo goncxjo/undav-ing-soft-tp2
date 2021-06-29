@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Report } from '../api/models/report';
 import { ReportsService } from '../api/services/reports.service';
 import * as _ from 'lodash';
+import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reports',
@@ -18,17 +19,52 @@ export class ReportsComponent implements OnInit {
   yAxisLabel: string = 'Clientes';
   xAxisLabel: string = 'Cantidad';
   yAxisLabelVehiculos: string = 'Vehiculos';
-  xAxisLabelVehiculos: string = 'Cantidad';
+  xAxisLabelVehiculos: string = 'Total %';
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
+  hoveredDate: NgbDate | null = null;
+
+  fromDate: NgbDate | null;
+  toDate: NgbDate | null;
+
   constructor(
-    private reportService: ReportsService
+    private reportService: ReportsService,
+    private calendar: NgbCalendar,
+    public formatter: NgbDateParserFormatter
   ) { 
     this.calculateDimension(innerWidth);
     this.initReportModel();
     this.noData = true;
+  }
+
+  onDateSelection(date: NgbDate) {
+    if (!this.fromDate && !this.toDate) {
+      this.fromDate = date;
+    } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
+      this.toDate = date;
+    } else {
+      this.toDate = null;
+      this.fromDate = date;
+    }
+  }
+
+  isHovered(date: NgbDate) {
+    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
+  }
+
+  isInside(date: NgbDate) {
+    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
+  }
+
+  isRange(date: NgbDate) {
+    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
+  }
+
+  validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
+    const parsed = this.formatter.parse(input);
+    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
 
   private initReportModel() {
@@ -46,7 +82,10 @@ export class ReportsComponent implements OnInit {
   }
 
   getReport() {
-     this.reportService.getReport()
+    let fromDate = new Date(this.fromDate.year, this.fromDate.month - 1, this.fromDate.day);
+    let toDate = new Date(this.toDate.year, this.toDate.month - 1, this.toDate.day);
+
+     this.reportService.getReport(fromDate, toDate)
      .then((data: Report) => {
         this.initReportModel();
         let results = this.results;

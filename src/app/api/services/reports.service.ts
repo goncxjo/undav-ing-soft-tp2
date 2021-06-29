@@ -15,16 +15,14 @@ export class ReportsService {
   ) { 
   }
 
-  async getReport(): Promise<any> {
+  async getReport(fromDate: Date, toDate: Date): Promise<any> {
     let data = await this.surveyService.getSurveysAsPromise()
 
     let report = new Report();
-    const surveys = _.map(data, (s: any) => new Survey(s));
+    const surveys = _.map(data, (s: any) => new Survey(s)).filter((s: Survey) => fromDate <= s.createdDate && s.createdDate <= toDate);
     
     report.potentialCustomers = _.filter(surveys, s => s.isPotentialCustomer());
     report.notPotentialCustomers = _.filter(surveys, s => !s.isPotentialCustomer());
-    console.log(surveys);
-    console.log(report);
 
     return report;
   }

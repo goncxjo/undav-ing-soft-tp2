@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReportsComponent } from './reports.component';
 import { ReportsRoutingModule } from './reports-routing.module';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { SharedModule } from '../shared/shared.module';
 import { LayoutModule } from '../layout/layout.module';
 
@@ -15,7 +17,9 @@ import { LayoutModule } from '../layout/layout.module';
     SharedModule,
     LayoutModule,
     ReportsRoutingModule,
-    NgxChartsModule
+    NgxChartsModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ReportsModule { }
