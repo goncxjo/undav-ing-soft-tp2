@@ -7,11 +7,10 @@ import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  // {
-  //   path: 'surveys',
-  //   loadChildren: () => import('./surveys/surveys.module').then(m => m.SurveysModule),
-  // },
-  { path: 'surveys', redirectTo: '/', pathMatch: 'full' },
+  {
+    path: 'surveys',
+    loadChildren: () => import('./surveys/surveys.module').then(m => m.SurveysModule),
+  },
   {
     path: 'security',
     loadChildren: () => import('./security/security.module').then(m => m.SecurityModule),
