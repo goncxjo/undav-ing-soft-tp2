@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Report } from '../api/models/report';
 import { ReportsService } from '../api/services/reports.service';
 import * as _ from 'lodash';
-import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reports',
@@ -10,10 +9,14 @@ import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-b
   styleUrls: ['./reports.component.sass']
 })
 export class ReportsComponent implements OnInit {
-  report: Report;
   noData: boolean = false;
+  showWarning: boolean = false;
+
   view: any[];
-  results;
+  report: any;
+
+  fromDate: Date;
+  toDate: Date;
 
   // options
   yAxisLabel: string = 'Clientes';
@@ -24,51 +27,17 @@ export class ReportsComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  hoveredDate: NgbDate | null = null;
-
-  fromDate: NgbDate | null;
-  toDate: NgbDate | null;
-
   constructor(
     private reportService: ReportsService,
-    private calendar: NgbCalendar,
-    public formatter: NgbDateParserFormatter
+
   ) { 
     this.calculateDimension(innerWidth);
     this.initReportModel();
     this.noData = true;
   }
 
-  onDateSelection(date: NgbDate) {
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
-      this.toDate = date;
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
-    }
-  }
-
-  isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInside(date: NgbDate) {
-    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
-  }
-
-  isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
-  }
-
-  validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
-    const parsed = this.formatter.parse(input);
-    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
-  }
-
   private initReportModel() {
-    this.results = {
+    this.report = {
       potenciales: [],
       vehiculos: [],
     };
@@ -81,26 +50,30 @@ export class ReportsComponent implements OnInit {
   ngOnInit() {
   }
 
-  getReport() {
-    let fromDate = new Date(this.fromDate.year, this.fromDate.month - 1, this.fromDate.day);
-    let toDate = new Date(this.toDate.year, this.toDate.month - 1, this.toDate.day);
+  onDatePickedHandler(data: string) {
+    const dateRange = JSON.parse(data);
+    this.fromDate = new Date(dateRange.fromDate) || null;
+    this.toDate = new Date(dateRange.toDate) || null;
+  }
 
-     this.reportService.getReport(fromDate, toDate)
+  getReport() {
+     this.reportService.getReport(this.fromDate, this.toDate)
      .then((data: Report) => {
         this.initReportModel();
-        let results = this.results;
-        
-        results.potenciales.push({ name: "Potenciales", value: data.potentialCustomers.length });
-        results.potenciales.push({ name: "No cumplen", value: data.notPotentialCustomers.length });
-        
-        results.vehiculos.push({ name: "Motocicleta", series: this.getSeriesMotocicleta(data) });
-        results.vehiculos.push({ name: "Auto", series: this.getSeriesAuto(data) });
-        results.vehiculos.push({ name: "Camioneta", series: this.getSeriesCamioneta(data) });
-        
-        console.log('component',results);
-        this.report = data;
+        let results = this.report;
         this.noData = data.total() == 0;
-        Object.assign(this.results, results);
+        this.showWarning = true;
+
+        if(!this.noData) {
+          results.potenciales.push({ name: "Potenciales", value: data.potentialCustomers.length });
+          results.potenciales.push({ name: "No cumplen", value: data.notPotentialCustomers.length });
+  
+          results.vehiculos.push({ name: "Motocicleta", series: this.getSeriesMotocicleta(data) });
+          results.vehiculos.push({ name: "Auto", series: this.getSeriesAuto(data) });
+          results.vehiculos.push({ name: "Camioneta", series: this.getSeriesCamioneta(data) });
+          
+          Object.assign(this.report, results);
+        }
      })
      .catch(err => console.log(err));
   }
