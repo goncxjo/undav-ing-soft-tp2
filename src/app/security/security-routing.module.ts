@@ -1,30 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RolesListComponent } from './roles/roles-list/roles-list.component';
-import { GetRolesListResolver } from './get-roles-list.resolver';
-import { UsersListComponent } from './users/users-list/users-list.component';
-import { GetUsersListResolver } from './get-users-list.resolver';
 import { SecurityComponent } from './security.component';
 import { AuthGuardService as AuthGuard } from '../auth/auth-guard.service';
+import { UsersAdminComponent } from './users/users-admin/users-admin.component';
+import { GetUsersListResolver } from './get-users-list.resolver';
 
 const routes: Routes = [
   { path: '', component: SecurityComponent },
   {
     path: 'roles',
-    component: RolesListComponent,
-    resolve: {
-      entity: GetRolesListResolver
-    },
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule),
   },
   {
     path: 'users',
-    component: UsersListComponent,
+    component: UsersAdminComponent,
     resolve: {
       entity: GetUsersListResolver
     },
-    canActivate: [AuthGuard]
-  },
+    canActivate: [AuthGuard]  },
   // { path: '', redirectTo: 'roles', pathMatch: 'full' },
 ];
 
@@ -32,7 +25,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   providers: [
-    GetRolesListResolver,
     GetUsersListResolver,
     AuthGuard
   ]

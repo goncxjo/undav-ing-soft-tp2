@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { UserList } from 'src/app/api/models/user-list';
 
 @Component({
-  selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.sass']
+  selector: 'app-users-admin',
+  templateUrl: './users-admin.component.html',
+  styleUrls: ['./users-admin.component.sass']
 })
-export class UsersListComponent implements OnInit {
+export class UsersAdminComponent implements OnInit {
   page = 1;
   pageSize = 5;
   collectionSize: number;

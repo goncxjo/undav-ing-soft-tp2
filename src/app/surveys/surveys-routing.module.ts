@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService as AuthGuard } from '../auth/auth-guard.service';
-import { AdminComponent } from './admin/admin.component';
-import { EditComponent } from './edit/edit.component';
+import { SurveysAdminComponent } from './surveys-admin/surveys-admin.component';
+import { SurveysEditComponent } from './surveys-edit/surveys-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'admin', pathMatch: 'full' },
   {
     path: 'admin',
-    component: AdminComponent,
+    component: SurveysAdminComponent,
     resolve: {
       // entity: GetSurveysResolver
     },
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'edit',
-    component: EditComponent,
+    component: SurveysEditComponent,
     resolve: {
       // entity: GetSurveyResolver
     },

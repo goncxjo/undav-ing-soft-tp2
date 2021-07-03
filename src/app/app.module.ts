@@ -21,6 +21,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
   declarations: [
     AppComponent,
     HomeComponent,
+    
     LoginComponent,
   ],
   imports: [

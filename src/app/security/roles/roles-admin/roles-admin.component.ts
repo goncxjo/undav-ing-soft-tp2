@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Role } from 'src/app/api/models/role';
 
 @Component({
-  selector: 'app-roles-list',
-  templateUrl: './roles-list.component.html',
-  styleUrls: ['./roles-list.component.sass']
+  selector: 'app-roles-admin',
+  templateUrl: './roles-admin.component.html',
+  styleUrls: ['./roles-admin.component.sass']
 })
-export class RolesListComponent implements OnInit {
+export class RolesAdminComponent implements OnInit {
   page = 1;
   pageSize = 5;
   collectionSize: number;

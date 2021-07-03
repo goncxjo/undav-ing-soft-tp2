@@ -25,10 +25,10 @@
             <td>{{ role.name }}</td>
             <td>{{ role.details }}</td>
             <td class="btn-group-sm">
-              <button class="btn btn-link" placement="top" ngbTooltip="View" [routerLink]="['.', role.id]" disabled>
+              <button class="btn btn-link" placement="top" ngbTooltip="View" [routerLink]="['..', role.id]">
                 <span class="fa fa-eye"></span>
               </button>
-              <button class="btn btn-link" placement="top" ngbTooltip="Edit" [routerLink]="['.', role.id, 'edit']" disabled>
+              <button class="btn btn-link" placement="top" ngbTooltip="Edit" [routerLink]="['..', role.id, 'edit']">
                 <span class="fa fa-edit"></span>
               </button>
               <button class="btn btn-link" placement="top" ngbTooltip="Delete" disabled>
