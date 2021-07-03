@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as _ from 'lodash';
+import { Subscription } from 'rxjs';
 import { Role } from 'src/app/api/models/role';
 
 @Component({
@@ -8,12 +10,13 @@ import { Role } from 'src/app/api/models/role';
   styleUrls: ['./roles-admin.component.sass']
 })
 export class RolesAdminComponent implements OnInit {
+  private subscription: Subscription;
+  ENTITIES: Role[]
+  // pagination
+  entities: Role[]
   page = 1;
   pageSize = 5;
   collectionSize: number;
-  ROLES: Role[]
-  roles: Role[]
-  private subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute
@@ -21,22 +24,23 @@ export class RolesAdminComponent implements OnInit {
 
   ngOnInit() {
     this.subscription = this.activatedRoute.data.subscribe((data: { entity: Role[] }) => {
-      this.ROLES = data.entity;
-      this.collectionSize = this.ROLES.length;
-      this.refreshRoles();
+      this.ENTITIES = data.entity;
+      this.collectionSize = this.ENTITIES.length;
+      this.refreshEntities();
     })
   }
 
   get noData() {
-    return this.ROLES.length === 0
+    return this.ENTITIES.length === 0
   }
 
-  refreshRoles() {
-    this.roles = this.ROLES
-      .map((role, i) => ({id: i + 1, ...role}))
+  refreshEntities() {
+    this.entities = _
+      .map(this.ENTITIES, (entity, i) => ({ id: i + 1, ...entity }))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();  }
+    this.subscription.unsubscribe();
+  }
 }

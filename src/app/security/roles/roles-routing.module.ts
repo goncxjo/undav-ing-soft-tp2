@@ -23,6 +23,7 @@ const routes: Routes = [
     resolve: {
       entity: GetRoleResolver
     },
+    data: { title: 'Editar Rol', isEdit: true },
     canActivate: [AuthGuard]
   },
   {
@@ -31,6 +32,7 @@ const routes: Routes = [
     resolve: {
       entity: GetRoleResolver
     },
+    data: { title: 'Visualizar Rol', isEdit: false },
     canActivate: [AuthGuard]
   },
 ];

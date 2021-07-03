@@ -20,15 +20,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let role of roles">
-            <td>{{ role.id }}</td>
-            <td>{{ role.name }}</td>
-            <td>{{ role.details }}</td>
+          <tr *ngFor="let entity of entities">
+            <td>{{ entity.id }}</td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.details }}</td>
             <td class="btn-group-sm">
-              <button class="btn btn-link" placement="top" ngbTooltip="View" [routerLink]="['..', role.id]">
+              <button class="btn btn-link" placement="top" ngbTooltip="View" [routerLink]="['..', entity.id]">
                 <span class="fa fa-eye"></span>
               </button>
-              <button class="btn btn-link" placement="top" ngbTooltip="Edit" [routerLink]="['..', role.id, 'edit']">
+              <button class="btn btn-link" placement="top" ngbTooltip="Edit" [routerLink]="['..', entity.id, 'edit']">
                 <span class="fa fa-edit"></span>
               </button>
               <button class="btn btn-link" placement="top" ngbTooltip="Delete" disabled>
