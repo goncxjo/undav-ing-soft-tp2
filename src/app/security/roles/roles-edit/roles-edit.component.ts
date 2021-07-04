@@ -35,7 +35,7 @@ export class RolesEditComponent implements OnInit {
       this.roleForm = new FormGroup({
         id: new FormControl({ value: this.entity.id || '', disabled: this.readonly }),
         name: new FormControl({ value: this.entity.name || '', disabled: this.readonly }, [Validators.required, Validators.minLength(2)]),
-        details: new FormControl({ value: this.entity.details || '', disabled: this.readonly }, [Validators.minLength(2)]),
+        details: new FormControl({ value: this.entity.details || '', disabled: this.readonly }, [Validators.required, Validators.minLength(2)]),
       });  
     });
   }

@@ -19,14 +19,38 @@
           <input type="text" class="form-control" id="details" formControlName="details" placeholder="Información sobre el rol...">
         </div>
       </div>
-      <div class="form-row">
-        <button class="btn btn-primary" (click)="goBack()">
-          <i class="fas fa-arrow-left"></i> Cancelar
-        </button>
-        <button class="ml-2 btn btn-primary" (click)="saveEntity()" [disabled]="readonly || roleForm.invalid">
-          <i class="fas fa-save"></i> Guardar
-        </button>
+
+      <div class="form-row mb-3">
+        <div class="col">
+          <button class="btn btn-primary" (click)="goBack()">
+            <i class="fas fa-arrow-left"></i> Cancelar
+          </button>
+          <button class="ml-2 btn btn-primary" (click)="saveEntity()" [disabled]="readonly || roleForm.invalid">
+            <i class="fas fa-save"></i> Guardar
+          </button>
+        </div>
       </div>
+
+      <!-- TODO: mejorar esto con un loop -->
+      <div class="form-row">
+        <div class="col-sm-12" *ngIf="roleForm.controls.name.invalid && (roleForm.controls.name.dirty || roleForm.controls.name.touched)">
+          <p *ngIf="roleForm.controls.name.errors?.required">
+            <ngb-alert [dismissible]="false" type="danger">El nombre es requerido.</ngb-alert>
+          </p>
+          <p *ngIf="roleForm.controls.name.errors?.minlength">
+            <ngb-alert [dismissible]="false" type="danger">El nombre debe tener al menos 2 caracteres.</ngb-alert>
+          </p>
+        </div>
+        <div class="col-sm-12" *ngIf="roleForm.controls.details.invalid && (roleForm.controls.details.dirty || roleForm.controls.details.touched)">
+          <p *ngIf="roleForm.controls.details.errors?.required">
+            <ngb-alert [dismissible]="false" type="danger">La descripción es requerida.</ngb-alert>
+          </p>
+          <p *ngIf="roleForm.controls.details.errors?.minlength">
+            <ngb-alert [dismissible]="false" type="danger">La descripción debe tener al menos 2 caracteres.</ngb-alert>
+          </p>
+        </div>
+      </div>
+
     </form>
   </div>
 </div>
