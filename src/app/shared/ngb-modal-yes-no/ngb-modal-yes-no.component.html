@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <p>{{question}}!</p>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="confirm('yes')">
+    <i class="fas fa-thumbs-up"></i> Sí
+  </button>
+  <button type="button" class="btn btn-primary" (click)="confirm('no')">
+    <i class="fas fa-thumbs-down"></i> No
+  </button>
+</div>

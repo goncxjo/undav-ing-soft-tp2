@@ -13,7 +13,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>ID</th>
+            <!-- <th>ID</th> -->
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Acciones</th>
@@ -21,17 +21,17 @@
         </thead>
         <tbody>
           <tr *ngFor="let entity of entities">
-            <td>{{ entity.id }}</td>
+            <!-- <td>{{ entity.id }}</td> -->
             <td>{{ entity.name }}</td>
             <td>{{ entity.details }}</td>
             <td class="btn-group-sm">
-              <button class="btn btn-link" placement="top" ngbTooltip="View" [routerLink]="['..', entity.id]">
+              <button class="btn btn-link" placement="top" ngbTooltip="Visualizar" [routerLink]="['..', entity.id]">
                 <span class="fa fa-eye"></span>
               </button>
-              <button class="btn btn-link" placement="top" ngbTooltip="Edit" [routerLink]="['..', entity.id, 'edit']">
+              <button class="btn btn-link" placement="top" ngbTooltip="Editar" [routerLink]="['..', entity.id, 'edit']">
                 <span class="fa fa-edit"></span>
               </button>
-              <button class="btn btn-link" placement="top" ngbTooltip="Delete" disabled>
+              <button class="btn btn-link" placement="top" ngbTooltip="Eliminar" (click)="deleteEntity(entity.id)">
                 <span class="fa fa-trash"></span>
               </button>
             </td>
@@ -51,18 +51,18 @@
         </button>
       </div>
       <div>
-        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshRoles()"></ngb-pagination>
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshEntities()"></ngb-pagination>
       </div>
       <div>
-        <select class="custom-select" [(ngModel)]="pageSize" (ngModelChange)="refreshRoles()">
+        <select class="custom-select" [(ngModel)]="pageSize" (ngModelChange)="refreshEntities()">
           <option [ngValue]="5">5 items por página</option>
           <option [ngValue]="10">10 items por página</option>
           <option [ngValue]="15">15 items por página</option>
         </select>
       </div>
       <div>
-        <button class="btn btn-xs btn-primary" disabled>
-          <span class="fa fa-plus"></span> Nuevo
+        <button class="btn btn-xs btn-primary" [routerLink]="['..', 'new']">
+          <span class="fa fa-plus"></span> Agregar
         </button>
       </div>
     </div>

@@ -6,7 +6,7 @@
 
 <div class="card">
   <div class="card-body">
-    <form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="roleForm">
 
       <div class="form-row">
         <input type="hidden" name="id" formControlName="id">
@@ -16,13 +16,16 @@
         </div>
         <div class="form-group col-md-9">
           <label for="details">Descripción</label>
-          <input type="text" class="form-control" id="details" formControlName="details"
-            placeholder="Información sobre el rol...">
+          <input type="text" class="form-control" id="details" formControlName="details" placeholder="Información sobre el rol...">
         </div>
       </div>
       <div class="form-row">
-        <button class="btn btn-primary" (click)="goBack()"><i class="fas fa-arrow-left"></i> Cancelar</button>
-        <button type="submit" class="ml-2 btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+        <button class="btn btn-primary" (click)="goBack()">
+          <i class="fas fa-arrow-left"></i> Cancelar
+        </button>
+        <button class="ml-2 btn btn-primary" (click)="saveEntity()" [disabled]="readonly || roleForm.invalid">
+          <i class="fas fa-save"></i> Guardar
+        </button>
       </div>
     </form>
   </div>

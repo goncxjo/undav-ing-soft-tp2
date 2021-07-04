@@ -5,6 +5,7 @@ import { GetRolesListResolver } from '../get-roles-list.resolver';
 import { GetRoleResolver } from '../get-role-resolver';
 import { RolesEditComponent } from './roles-edit/roles-edit.component';
 import { AuthGuardService as AuthGuard } from '../../auth/auth-guard.service';
+import { GetNewRoleResolver } from '../get-new-role-resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: 'admin' },
@@ -23,7 +24,16 @@ const routes: Routes = [
     resolve: {
       entity: GetRoleResolver
     },
-    data: { title: 'Editar Rol', isEdit: true },
+    data: { title: 'Editar Rol', isEdit: true, readonly: false },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'new',
+    component: RolesEditComponent,
+    resolve: {
+      entity: GetNewRoleResolver
+    },
+    data: { title: 'Crear Rol', isEdit: false, readonly: false },
     canActivate: [AuthGuard]
   },
   {
@@ -32,7 +42,7 @@ const routes: Routes = [
     resolve: {
       entity: GetRoleResolver
     },
-    data: { title: 'Visualizar Rol', isEdit: false },
+    data: { title: 'Visualizar Rol', isEdit: false, readonly: true },
     canActivate: [AuthGuard]
   },
 ];
@@ -42,6 +52,7 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     GetRolesListResolver,
+    GetNewRoleResolver,
     GetRoleResolver,
     AuthGuard
   ]

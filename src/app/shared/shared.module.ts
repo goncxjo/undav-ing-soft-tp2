@@ -5,6 +5,7 @@ import { NameContainsPipe } from './name-contains.pipe';
 
 import { TimerComponent } from './timer/timer.component';
 import { DatepickerRangeComponent } from './datepicker-range/datepicker-range.component';
+import { NgbModalYesNoComponent } from './ngb-modal-yes-no/ngb-modal-yes-no.component';
 
 const MODULES = [
   CommonModule,
@@ -17,7 +18,8 @@ const PRIVATE_COMPONENTS = [
 const PUBLIC_COMPONENTS = [
   TimerComponent,
   DatepickerRangeComponent,
-  NameContainsPipe
+  NameContainsPipe,
+  NgbModalYesNoComponent,
 ]
 
 @NgModule({
@@ -25,6 +27,7 @@ const PUBLIC_COMPONENTS = [
     ...PRIVATE_COMPONENTS,
     ...PUBLIC_COMPONENTS,
   ],
+  entryComponents: [NgbModalYesNoComponent],
   imports: MODULES,
   exports: [
     MODULES,

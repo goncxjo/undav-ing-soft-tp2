@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -18,31 +18,33 @@ export class RolesEditComponent implements OnInit {
   roleForm: any;
   title: string;
   isEdit: string;
+  readonly: any;
 
   constructor(
     private route: ActivatedRoute
     , private location: Location
     , private service: RolesService
     , private toastr: ToastrService
-    , private fb: FormBuilder
   ) {
-    this.roleForm = this.fb.group({
-      id: '',
-      name: '',
-      details: '',
+    this.subscription = this.route.data.subscribe((data: { entity: Role }) => {
+      this.title = data['title'];
+      this.isEdit = data['isEdit'];
+      this.readonly = data['readonly'];
+      this.entity = data.entity;
+
+      this.roleForm = new FormGroup({
+        id: new FormControl({ value: this.entity.id || '', disabled: this.readonly }),
+        name: new FormControl({ value: this.entity.name || '', disabled: this.readonly }, [Validators.required, Validators.minLength(2)]),
+        details: new FormControl({ value: this.entity.details || '', disabled: this.readonly }, [Validators.minLength(2)]),
+      });  
     });
   }
 
   ngOnInit() {
-    this.subscription = this.route.data.subscribe((data: { entity: Role, mode: string }) => {
-      this.entity = data.entity;
-      this.title = data['title'];
-      this.isEdit = data['isEdit'];
-    })
   }
 
-  onSubmit() {
-      this.service.save(this.roleForm.value)
+  saveEntity() {
+    this.service.save(this.roleForm.value)
       .then(() => this.onSuccess())
       .catch((msg) => this.onError(msg));
   }
@@ -58,5 +60,9 @@ export class RolesEditComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

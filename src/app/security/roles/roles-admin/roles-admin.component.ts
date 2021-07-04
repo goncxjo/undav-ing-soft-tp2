@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as _ from 'lodash';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Role } from 'src/app/api/models/role';
+import { RolesService } from 'src/app/api/services/roles.service';
+import { NgbModalYesNoComponent } from 'src/app/shared/ngb-modal-yes-no/ngb-modal-yes-no.component';
 
 @Component({
   selector: 'app-roles-admin',
@@ -19,11 +23,14 @@ export class RolesAdminComponent implements OnInit {
   collectionSize: number;
 
   constructor(
-    private activatedRoute: ActivatedRoute
+    private route: ActivatedRoute,
+    private service: RolesService,
+    private toastr: ToastrService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
-    this.subscription = this.activatedRoute.data.subscribe((data: { entity: Role[] }) => {
+    this.subscription = this.route.data.subscribe((data: { entity: Role[] }) => {
       this.ENTITIES = data.entity;
       this.collectionSize = this.ENTITIES.length;
       this.refreshEntities();
@@ -38,6 +45,40 @@ export class RolesAdminComponent implements OnInit {
     this.entities = _
       .map(this.ENTITIES, (entity, i) => ({ id: i + 1, ...entity }))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  }
+
+  deleteEntity(id) {
+    const title = 'Eliminar';
+    const question = `¿Desea eliminar el rol ${id}?`;
+    this.confirm(title, question).then((ok: string) => {
+      if(ok == 'yes') {
+        this.service.delete(id)
+        .then(() => this.onSuccess())
+        .catch((msg) => this.onError(msg));
+      }
+    });
+  }
+
+  onSuccess() {
+    this.toastr.success('Rol eliminado', 'Operación exitosa');
+    // TODO: ver porque no funciona esto
+    // this.refreshEntities();
+    this.refresh();
+  }
+
+  onError(msg) {
+    this.toastr.error(msg, 'Operación fallida');
+  }
+
+  confirm(title, question): Promise<any> {
+    const modalRef = this.modalService.open(NgbModalYesNoComponent);
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.question = question;
+    return modalRef.result;
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
   ngOnDestroy() {
