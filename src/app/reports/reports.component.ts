@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Report } from '../api/models/report';
-import { ReportsService } from '../api/services/reports.service';
+import { Report } from '../models/report';
+import { ReportsService } from './reports.service';
 import * as _ from 'lodash';
 
 @Component({

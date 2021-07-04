@@ -4,8 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as _ from 'lodash';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { Role } from 'src/app/api/models/role';
-import { RolesService } from 'src/app/api/services/roles.service';
+import { Role } from 'src/app/models/role';
+import { RolesService } from 'src/app/security/roles/roles.service';
 import { NgbModalYesNoComponent } from 'src/app/shared/ngb-modal-yes-no/ngb-modal-yes-no.component';
 
 @Component({

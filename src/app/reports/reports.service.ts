@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Report } from '../models/report';
 import { Survey } from '../models/survey';
-import { SurveyService } from './survey.service';
+import { SurveyService } from '../surveys/survey.service';
 import * as _ from 'lodash'
 
 @Injectable({

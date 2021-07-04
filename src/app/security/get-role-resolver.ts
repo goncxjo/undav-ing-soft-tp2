@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Role } from '../api/models/Role';
-import { RolesService } from '../api/services/roles.service';
+import { Role } from '../models/Role';
+import { RolesService } from './roles/roles.service';
 
 @Injectable()
 export class GetRoleResolver implements Resolve<Observable<Role>> {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserBasicData } from 'src/app/api/models/user-basic-data';
+import { UserBasicData } from 'src/app/models/user-basic-data';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({

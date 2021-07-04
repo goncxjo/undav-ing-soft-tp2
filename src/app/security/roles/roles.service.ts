@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Role } from '../models/role';
+import { Role } from '../../models/role';
 import * as uuid from 'uuid';
 import { of } from 'rxjs';
 

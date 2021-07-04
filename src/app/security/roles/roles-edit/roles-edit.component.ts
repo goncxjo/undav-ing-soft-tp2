@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ToastrService } from 'ngx-toastr';
-import { Role } from 'src/app/api/models/role';
-import { RolesService } from 'src/app/api/services/roles.service';
+import { Role } from 'src/app/models/role';
+import { RolesService } from 'src/app/security/roles/roles.service';
 
 @Component({
   selector: 'app-roles-edit',

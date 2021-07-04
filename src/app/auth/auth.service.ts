@@ -3,8 +3,8 @@ import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of, Subject } from 'rxjs';
-import { UserBasicData } from '../api/models/user-basic-data';
-import { UsersService } from '../api/services/users.service';
+import { UserBasicData } from '../models/user-basic-data';
+import { UsersService } from '../security/users/users.service';
 
 @Injectable({
   providedIn: 'root'
