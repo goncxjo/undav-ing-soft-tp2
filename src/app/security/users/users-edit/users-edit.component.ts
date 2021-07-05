@@ -15,7 +15,7 @@ import * as bcrypt from 'bcryptjs';
 export class UsersEditComponent implements OnInit {
   subscription: any;
   entity: User;
-  roleForm: any;
+  userForm: any;
   title: string;
   isEdit: string;
   readonly: any;
@@ -32,7 +32,7 @@ export class UsersEditComponent implements OnInit {
       this.readonly = data['readonly'];
       this.entity = data.entity;
 
-      this.roleForm = new FormGroup({
+      this.userForm = new FormGroup({
         id: new FormControl({ value: this.entity.id || '', disabled: this.readonly }),
         firstName: new FormControl({ value: this.entity.firstName || '', disabled: this.readonly }, [Validators.required, Validators.minLength(2)]),
         lastName: new FormControl({ value: this.entity.lastName || '', disabled: this.readonly }, [Validators.required, Validators.minLength(2)]),
@@ -47,7 +47,7 @@ export class UsersEditComponent implements OnInit {
   }
 
   saveEntity() {
-    this.service.save(this.roleForm.value)
+    this.service.save(this.userForm.value)
       .then(() => this.onSuccess())
       .catch((msg) => this.onError(msg));
   }

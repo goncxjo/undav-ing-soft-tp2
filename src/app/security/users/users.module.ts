@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
 import { UsersRoutingModule } from './users-routing.module';
+import { RolesSelectorComponent } from '../roles/roles-selector/roles-selector.component';
 
 
 
@@ -13,6 +14,7 @@ import { UsersRoutingModule } from './users-routing.module';
   declarations: [
     UsersAdminComponent,
     UsersEditComponent,
+    RolesSelectorComponent
   ],
   imports: [
     FormsModule,

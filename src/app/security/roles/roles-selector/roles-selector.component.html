@@ -1,1 +1,8 @@
-<p>roles-selector works!</p>
+<div *ngIf="form" [formGroup]="form">
+    <select class="form-control" [formControlName]="name">
+      <option [value]="null" disabled>-- {{ defaultName }} --</option>
+      <option *ngFor="let entity of entities" [ngValue]="entity.id">{{ entity.name }}
+      </option>
+    </select>
+  </div>
+  

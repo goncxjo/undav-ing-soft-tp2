@@ -8,21 +8,35 @@ import { LayoutModule } from 'src/app/layout/layout.module';
 import { RolesRoutingModule } from './roles-routing.module';
 import { RolesSelectorComponent } from './roles-selector/roles-selector.component';
 
+const MODULES = [
+  FormsModule,
+  ReactiveFormsModule,
+  CommonModule,
+  SharedModule,
+  LayoutModule,
+  RolesRoutingModule
+]
 
+const PRIVATE_COMPONENTS = [
+];
+
+const PUBLIC_COMPONENTS = [
+  RolesAdminComponent,
+  RolesEditComponent,
+  RolesSelectorComponent,
+  RolesSelectorComponent,
+]
 
 @NgModule({
   declarations: [
-    RolesAdminComponent,
-    RolesEditComponent,
-    RolesSelectorComponent,
+    ...PRIVATE_COMPONENTS,
+    ...PUBLIC_COMPONENTS,
   ],
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule,
-    SharedModule,
-    LayoutModule,
-    RolesRoutingModule
+  // entryComponents: [NgbModalYesNoComponent],
+  imports: MODULES,
+  exports: [
+    MODULES,
+    ...PUBLIC_COMPONENTS
   ]
 })
 export class RolesModule { }
