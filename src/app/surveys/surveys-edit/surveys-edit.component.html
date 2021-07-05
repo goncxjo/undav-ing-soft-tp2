@@ -1,1 +1,81 @@
-<p>edit works!</p>
+<div class="row mb-2">
+  <h3>
+    {{ title }}
+  </h3>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="surveyForm">
+
+      <div class="form-row">
+        <input type="hidden" name="id" formControlName="id">
+        <div class="form-group col-md-6">
+          <label for="name">Nombre/s</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre/s del encuestado...">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="surname">Apellido/s</label>
+          <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Apellido/s del encuestado...">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="age">Edad</label>
+          <input type="number" min="18" class="form-control" id="age" formControlName="age" placeholder="Edad del encuestado...">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phone">Teléfono</label>
+          <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Teléfono del encuestado...">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" formControlName="email" placeholder="Email del encuestado...">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="otherPhone">Otro teléfono</label>
+          <input type="text" class="form-control" id="otherPhone" formControlName="otherPhone" placeholder="Otro teléfono del encuestado...">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="vehicles">Vehículos</label>
+          <input type="text" class="form-control" id="name" formArrayName="vehicles" (change)="onVehiclesChange($event)" placeholder="Vehículos del encuestado...">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="createdDate">Fecha de encuesta</label>
+          <div class="input-group">
+            <input class="form-control" id="createdDate" formControlName="createdDate" ngbDatepicker #d="ngbDatepicker" placeholder="yyyy-mm-dd" [(ngModel)]="model">
+            <div class="input-group-append">
+              <button class="btn btn-primary calendar" (click)="d.toggle()" type="button">
+                <span class="fa fa-calendar-alt"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row mb-3">
+        <div class="col">
+          <button class="btn btn-primary" (click)="goBack()">
+            <i class="fas fa-arrow-left"></i> Cancelar
+          </button>
+          <button class="ml-2 btn btn-primary" (click)="saveEntity()" [disabled]="readonly || surveyForm.invalid">
+            <i class="fas fa-save"></i> Guardar
+          </button>
+        </div>
+      </div>
+
+      <!-- TODO: mejorar esto con un loop -->
+      <div class="form-row">
+        <div class="col-sm-12" *ngIf="surveyForm.controls.name.invalid && (surveyForm.controls.name.dirty || surveyForm.controls.name.touched)">
+          <p *ngIf="surveyForm.controls.name.errors?.required">
+            <ngb-alert [dismissible]="false" type="danger">El nombre es requerido.</ngb-alert>
+          </p>
+          <p *ngIf="surveyForm.controls.name.errors?.minlength">
+            <ngb-alert [dismissible]="false" type="danger">El nombre debe tener al menos 2 caracteres.</ngb-alert>
+          </p>
+        </div>
+
+      </div>
+
+      {{ surveyForm.value | json }}
+    </form>
+  </div>
+</div>

@@ -9,10 +9,14 @@
       "email": "edellafanta@fakemail.com",
       "otherPhone": "",
       "vehicles": [
-        "car"
+        3,
+        2
       ],
-      "createdDate": "2021-06-05T14:36:40.613Z",
-      "modifiedDate": ""
+      "createdDate": {
+        "year": 2021,
+        "month": 5,
+        "day": 6
+      }
     },
     {
       "id": "11bb8409-60e9-4f3d-9ab7-9812fbd25f13",

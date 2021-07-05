@@ -1,1 +1,77 @@
-<p>admin works!</p>
+<div class="row mb-2">
+    <h3>
+      Encuestas
+    </h3>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-warning" role="alert" *ngIf="noData">
+        Sin datos
+      </div>
+      <div class="table-responsive" *ngIf="!noData">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <!-- <th>ID</th> -->
+              <th>Nombre/s</th>
+              <th>Apellidos/s</th>
+              <th>Edad</th>
+              <th>Teléfono</th>
+              <th>Email</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let entity of entities">
+              <!-- <td>{{ entity.id }}</td> -->
+              <td>{{ entity.name }}</td>
+              <td>{{ entity.surname }}</td>
+              <td>{{ entity.age }}</td>
+              <td>{{ entity.phone }}</td>
+              <td>{{ entity.email }}</td>
+              <td class="btn-group-sm">
+                <button class="btn btn-link" placement="top" ngbTooltip="Visualizar" [routerLink]="['..', entity.id]">
+                  <span class="fa fa-eye"></span>
+                </button>
+                <button class="btn btn-link" placement="top" ngbTooltip="Editar" [routerLink]="['..', entity.id, 'edit']">
+                  <span class="fa fa-edit"></span>
+                </button>
+                <button class="btn btn-link" placement="top" ngbTooltip="Eliminar" (click)="deleteEntity(entity.id)">
+                  <span class="fa fa-trash"></span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <div class="d-flex justify-content-between p-2">
+        <div>
+          <button class="btn btn-xs btn-primary" [routerLink]="['/security']">
+            <span class="fa fa-arrow-left"></span> Volver
+          </button>
+        </div>
+        <div>
+          <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshEntities()"></ngb-pagination>
+        </div>
+        <div>
+          <select class="custom-select" [(ngModel)]="pageSize" (ngModelChange)="refreshEntities()">
+            <option [ngValue]="5">5 items por página</option>
+            <option [ngValue]="10">10 items por página</option>
+            <option [ngValue]="15">15 items por página</option>
+          </select>
+        </div>
+        <div>
+          <button class="btn btn-xs btn-primary" [routerLink]="['..', 'new']">
+            <span class="fa fa-plus"></span> Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

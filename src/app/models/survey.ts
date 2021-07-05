@@ -3,14 +3,14 @@ import { Vehicle } from "./vehicle";
 export class Survey {
 
     constructor(rawSurvey: any) {
-        this.id = rawSurvey.id;
-        this.name = rawSurvey.name;
-        this.surname = rawSurvey.surname;
-        this.age = rawSurvey.age;
-        this.phone = rawSurvey.phone;
-        this.email = rawSurvey.email;
-        this.otherPhone = rawSurvey.otherPhone;
-        this.vehicles = rawSurvey.vehicles;
+        this.id = rawSurvey.id || '';
+        this.name = rawSurvey.name || '';
+        this.surname = rawSurvey.surname || '';
+        this.age = rawSurvey.age || '';
+        this.phone = rawSurvey.phone || '';
+        this.email = rawSurvey.email || '';
+        this.otherPhone = rawSurvey.otherPhone || '';
+        this.vehicles = rawSurvey.vehicles || [];
         this.createdDate = new Date(rawSurvey.createdDate || new Date());
         this.modifiedDate = new Date(rawSurvey.modifiedDate || new Date());
     }
