@@ -73,7 +73,6 @@ export class UsersService {
   }
 
   delete(id: string): Promise<User> {
-    console.log(id);
     const url = `${this.baseRoute}/${id}`;
     return this.http.delete<User>(url).toPromise();
   }

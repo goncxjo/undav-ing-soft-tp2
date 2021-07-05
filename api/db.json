@@ -9,10 +9,10 @@
       "email": "edellafanta@fakemail.com",
       "otherPhone": "",
       "vehicles": [
-        "1"
+        1
       ],
-      "createdDate": "2021-08-05T03:00:00.000Z",
-      "modifiedDate": "2021-07-05T16:06:57.100Z",
+      "createdDate": "2021-06-18T03:00:00.000Z",
+      "modifiedDate": "2021-07-05T17:39:05.947Z",
       "alreadyBought": true
     },
     {
@@ -36,11 +36,13 @@
       "email": "nikolaipakinov@fakemail.com",
       "otherPhone": "3333-5555",
       "vehicles": [
-        "2",
-        "3"
+        1,
+        2,
+        3
       ],
-      "createdDate": "2021-06-05T14:36:40.613Z",
-      "modifiedDate": ""
+      "createdDate": "2021-06-10T03:00:00.000Z",
+      "modifiedDate": "2021-07-05T17:38:37.474Z",
+      "alreadyBought": true
     },
     {
       "id": "b5b9fe15-1214-45d5-9fcd-d5bc31c8046f",
@@ -51,11 +53,12 @@
       "email": "fer.motola@fakemail.com",
       "otherPhone": "",
       "vehicles": [
-        "2",
-        "1"
+        2,
+        1
       ],
-      "createdDate": "2021-06-05T14:36:40.613Z",
-      "modifiedDate": ""
+      "createdDate": "2021-07-06T03:00:00.000Z",
+      "modifiedDate": "2021-07-05T17:44:13.939Z",
+      "alreadyBought": false
     },
     {
       "id": "1c723e68-4fd3-432e-95db-d6e29003d7ab",
@@ -78,12 +81,12 @@
       "email": "goncxjo.bonxcjo@hotymail.com",
       "otherPhone": "",
       "vehicles": [
-        "1",
-        "2"
+        1,
+        2
       ],
-      "createdDate": "2021-09-07T03:00:00.000Z",
-      "modifiedDate": "2021-07-05T16:16:58.144Z",
-      "alreadyBought": true
+      "createdDate": "2021-07-13T03:00:00.000Z",
+      "modifiedDate": "2021-07-05T17:44:32.350Z",
+      "alreadyBought": false
     }
   ],
   "roles": [
@@ -131,15 +134,15 @@
   ],
   "vehicles": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Motocicleta"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Auto"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Camioneta"
     }
   ]

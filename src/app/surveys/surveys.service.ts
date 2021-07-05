@@ -51,7 +51,6 @@ export class SurveysService {
   }
 
   delete(id: string): Promise<Survey> {
-    console.log(id);
     const url = `${this.baseRoute}/${id}`;
     return this.http.delete<Survey>(url).toPromise();
   }

@@ -44,7 +44,7 @@ export class SurveysEditComponent implements OnInit {
         email: new FormControl({ value: this.entity.email || '', disabled: this.readonly }, [Validators.required, Validators.minLength(2)]),
         otherPhone: new FormControl({ value: this.entity.otherPhone || '', disabled: this.readonly }),
         vehicles: new FormControl({ value: this.entity.vehicles || [], disabled: this.readonly }),
-        createdDate: new FormControl({ value: { year: createdDate.getFullYear(), month: createdDate.getMonth(), day: createdDate.getDay() }, disabled: this.readonly }, [Validators.required]),
+        createdDate: new FormControl({ value: { year: createdDate.getFullYear(), month: createdDate.getMonth() + 1, day: createdDate.getDate()}, disabled: this.readonly }, [Validators.required]),
         modifiedDate: new FormControl({ value: new Date(), disabled: this.readonly }),
         alreadyBought: new FormControl({ value: this.entity.alreadyBought || false, disabled: this.readonly }),
       });
@@ -56,7 +56,9 @@ export class SurveysEditComponent implements OnInit {
 
   saveEntity() {
     let entity = this.surveyForm.value;
-    entity.createdDate = new Date(entity.createdDate.year, entity.createdDate.month + 1, entity.createdDate.day);
+    let datee = new Date(entity.createdDate.year, entity.createdDate.month - 1, entity.createdDate.day);
+
+    entity.createdDate = datee;
 
     this.service.save(entity)
       .then(() => this.onSuccess())

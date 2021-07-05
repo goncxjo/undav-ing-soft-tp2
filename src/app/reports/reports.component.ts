@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Report } from '../models/report';
 import { ReportsService } from './reports.service';
 import * as _ from 'lodash';
+import { Survey } from '../models/survey';
 
 @Component({
   selector: 'app-reports',
@@ -40,6 +41,7 @@ export class ReportsComponent implements OnInit {
     this.report = {
       potenciales: [],
       vehiculos: [],
+      potencialesQueYaCompraron: [],
     };
   }
 
@@ -67,7 +69,9 @@ export class ReportsComponent implements OnInit {
         if(!this.noData) {
           results.potenciales.push({ name: "Potenciales", value: data.potentialCustomers.length });
           results.potenciales.push({ name: "No cumplen", value: data.notPotentialCustomers.length });
-  
+          results.potencialesQueYaCompraron.push({ name: "Potenciales", value: data.potentialCustomersAlreadyBought.length });
+          results.potencialesQueYaCompraron.push({ name: "No cumplen", value: data.potentialCustomers.length - data.potentialCustomersAlreadyBought.length });
+          
           results.vehiculos.push({ name: "Motocicleta", series: this.getSeriesMotocicleta(data) });
           results.vehiculos.push({ name: "Auto", series: this.getSeriesAuto(data) });
           results.vehiculos.push({ name: "Camioneta", series: this.getSeriesCamioneta(data) });

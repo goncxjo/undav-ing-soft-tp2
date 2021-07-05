@@ -55,7 +55,6 @@ export class RolesService {
   }
 
   delete(id: string): Promise<Role> {
-    console.log(id);
     const url = `${this.baseRoute}/${id}`;
     return this.http.delete<Role>(url).toPromise();
   }

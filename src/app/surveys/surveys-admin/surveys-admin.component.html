@@ -19,6 +19,7 @@
               <th>Edad</th>
               <th>Teléfono</th>
               <th>Email</th>
+              <th>Fecha encuesta</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -30,6 +31,7 @@
               <td>{{ entity.age }}</td>
               <td>{{ entity.phone }}</td>
               <td>{{ entity.email }}</td>
+              <td>{{ entity.createdDate | date }}</td>
               <td class="btn-group-sm">
                 <button class="btn btn-link" placement="top" ngbTooltip="Visualizar" [routerLink]="['..', entity.id]">
                   <span class="fa fa-eye"></span>

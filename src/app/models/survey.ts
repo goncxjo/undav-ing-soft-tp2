@@ -14,7 +14,7 @@ export class Survey {
             this.vehicles = rawSurvey.vehicles || [];
             this.createdDate = new Date(rawSurvey.createdDate || new Date());
             this.modifiedDate = new Date(rawSurvey.modifiedDate || new Date());
-            this.alreadyBought = false;
+            this.alreadyBought = rawSurvey.alreadyBought || false;
         }
     }
 

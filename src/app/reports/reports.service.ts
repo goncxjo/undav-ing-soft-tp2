@@ -22,6 +22,7 @@ export class ReportsService {
     const surveys = _.map(data, (s: any) => new Survey(s)).filter((s: Survey) => fromDate <= s.createdDate && s.createdDate <= toDate);
     
     report.potentialCustomers = _.filter(surveys, s => s.isPotentialCustomer());
+    report.potentialCustomersAlreadyBought = _.filter(report.potentialCustomers, s => s.alreadyBought);
     report.notPotentialCustomers = _.filter(surveys, s => !s.isPotentialCustomer());
 
     return report;
