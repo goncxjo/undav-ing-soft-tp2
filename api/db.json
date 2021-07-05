@@ -9,14 +9,11 @@
       "email": "edellafanta@fakemail.com",
       "otherPhone": "",
       "vehicles": [
-        3,
-        2
+        "1"
       ],
-      "createdDate": {
-        "year": 2021,
-        "month": 5,
-        "day": 6
-      }
+      "createdDate": "2021-08-05T03:00:00.000Z",
+      "modifiedDate": "2021-07-05T16:06:57.100Z",
+      "alreadyBought": true
     },
     {
       "id": "11bb8409-60e9-4f3d-9ab7-9812fbd25f13",
@@ -39,8 +36,8 @@
       "email": "nikolaipakinov@fakemail.com",
       "otherPhone": "3333-5555",
       "vehicles": [
-        "car",
-        "van"
+        "2",
+        "3"
       ],
       "createdDate": "2021-06-05T14:36:40.613Z",
       "modifiedDate": ""
@@ -54,8 +51,8 @@
       "email": "fer.motola@fakemail.com",
       "otherPhone": "",
       "vehicles": [
-        "car",
-        "motorcycle"
+        "2",
+        "1"
       ],
       "createdDate": "2021-06-05T14:36:40.613Z",
       "modifiedDate": ""
@@ -71,6 +68,22 @@
       "vehicles": [],
       "createdDate": "2021-06-05T14:36:40.613Z",
       "modifiedDate": ""
+    },
+    {
+      "id": "48050f61-8092-4b2d-99c3-7665b2fd485f",
+      "name": "goncxjo",
+      "surname": "boncxjo",
+      "age": 28,
+      "phone": "+54112244488812",
+      "email": "goncxjo.bonxcjo@hotymail.com",
+      "otherPhone": "",
+      "vehicles": [
+        "1",
+        "2"
+      ],
+      "createdDate": "2021-09-07T03:00:00.000Z",
+      "modifiedDate": "2021-07-05T16:16:58.144Z",
+      "alreadyBought": true
     }
   ],
   "roles": [
@@ -114,6 +127,20 @@
       "firstName": "Jonathan",
       "lastName": "Magnone",
       "roleId": "46664ea7-89b4-4a09-af52-86184d35afb8"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "1",
+      "name": "Motocicleta"
+    },
+    {
+      "id": "2",
+      "name": "Auto"
+    },
+    {
+      "id": "3",
+      "name": "Camioneta"
     }
   ]
 }

@@ -6,10 +6,15 @@ import { NameContainsPipe } from './name-contains.pipe';
 import { TimerComponent } from './timer/timer.component';
 import { DatepickerRangeComponent } from './datepicker-range/datepicker-range.component';
 import { NgbModalYesNoComponent } from './ngb-modal-yes-no/ngb-modal-yes-no.component';
+import { VehiclesMultiselectorComponent } from './vehicles-multiselector/vehicles-multiselector.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 
 const MODULES = [
   CommonModule,
-  NgbModule
+  NgbModule,
+  FormsModule,
+  ReactiveFormsModule,
 ]
 
 const PRIVATE_COMPONENTS = [
@@ -20,6 +25,8 @@ const PUBLIC_COMPONENTS = [
   DatepickerRangeComponent,
   NameContainsPipe,
   NgbModalYesNoComponent,
+  VehiclesMultiselectorComponent,
+  DatepickerComponent,
 ]
 
 @NgModule({

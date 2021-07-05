@@ -1,0 +1,8 @@
+<div class="input-group">
+    <input class="form-control" ngbDatepicker #d="ngbDatepicker" placeholder="yyyy-mm-dd" (dateSelect)="onDateSelection($event)" [(ngModel)]="model" [disabled]="disabled">
+    <div class="input-group-append">
+      <button class="btn btn-primary calendar" (click)="d.toggle()" type="button">
+        <span class="fa fa-calendar-alt"></span>
+      </button>
+    </div>
+  </div>

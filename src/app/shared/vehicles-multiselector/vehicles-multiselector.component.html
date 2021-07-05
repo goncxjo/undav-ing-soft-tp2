@@ -1,0 +1,7 @@
+<div *ngIf="form" [formGroup]="form">
+  <select multiple class="form-control multiple-select" [formControlName]="name">
+    <option [value]="null" disabled>-- {{ defaultName }} --</option>
+    <option *ngFor="let entity of entities" [value]="entity.id">{{ entity.name }}
+    </option>
+  </select>
+</div>

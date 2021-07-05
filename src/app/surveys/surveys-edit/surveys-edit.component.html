@@ -10,6 +10,7 @@
 
       <div class="form-row">
         <input type="hidden" name="id" formControlName="id">
+        <input type="hidden" name="modifiedDate" formControlName="modifiedDate">
         <div class="form-group col-md-6">
           <label for="name">Nombre/s</label>
           <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre/s del encuestado...">
@@ -35,19 +36,19 @@
           <input type="text" class="form-control" id="otherPhone" formControlName="otherPhone" placeholder="Otro teléfono del encuestado...">
         </div>
         <div class="form-group col-md-6">
-          <label for="vehicles">Vehículos</label>
-          <input type="text" class="form-control" id="name" formArrayName="vehicles" (change)="onVehiclesChange($event)" placeholder="Vehículos del encuestado...">
+          <label for="regularized">Vehiculos:</label>
+          <app-vehicles-multiselector [name]="'vehicles'" [form]="surveyForm"></app-vehicles-multiselector>
         </div>
         <div class="form-group col-md-6">
-            <label for="createdDate">Fecha de encuesta</label>
-          <div class="input-group">
-            <input class="form-control" id="createdDate" formControlName="createdDate" ngbDatepicker #d="ngbDatepicker" placeholder="yyyy-mm-dd" [(ngModel)]="model">
-            <div class="input-group-append">
-              <button class="btn btn-primary calendar" (click)="d.toggle()" type="button">
-                <span class="fa fa-calendar-alt"></span>
-              </button>
-            </div>
-          </div>
+          <label for="createdDate">Fecha de encuesta</label>
+          <app-datepicker [name]="'createdDate'" [form]="surveyForm" [disabled]="readonly"></app-datepicker>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="regularized">Compró anteriormente:</label>
+          <select class="form-control multiple-select" formControlName="alreadyBought">
+            <option [ngValue]="false">No</option>
+            <option [ngValue]="true">Sí</option>
+          </select>
         </div>
       </div>
 
@@ -72,10 +73,41 @@
             <ngb-alert [dismissible]="false" type="danger">El nombre debe tener al menos 2 caracteres.</ngb-alert>
           </p>
         </div>
-
+      <div class="col-sm-12" *ngIf="surveyForm.controls.surname.invalid && (surveyForm.controls.surname.dirty || surveyForm.controls.surname.touched)">
+          <p *ngIf="surveyForm.controls.surname.errors?.required">
+            <ngb-alert [dismissible]="false" type="danger">El apellido es requerido.</ngb-alert>
+          </p>
+          <p *ngIf="surveyForm.controls.surname.errors?.minlength">
+            <ngb-alert [dismissible]="false" type="danger">El apellido debe tener al menos 2 caracteres.</ngb-alert>
+          </p>
+        </div>
+      <div class="col-sm-12" *ngIf="surveyForm.controls.age.invalid && (surveyForm.controls.age.dirty || surveyForm.controls.age.touched)">
+          <p *ngIf="surveyForm.controls.age.errors?.required">
+            <ngb-alert [dismissible]="false" type="danger">La edad es requerida.</ngb-alert>
+          </p>
+        </div>
+      <div class="col-sm-12" *ngIf="surveyForm.controls.phone.invalid && (surveyForm.controls.phone.dirty || surveyForm.controls.phone.touched)">
+          <p *ngIf="surveyForm.controls.phone.errors?.required">
+            <ngb-alert [dismissible]="false" type="danger">El teléfono es requerido.</ngb-alert>
+          </p>
+          <p *ngIf="surveyForm.controls.phone.errors?.minlength">
+            <ngb-alert [dismissible]="false" type="danger">El teléfono debe tener al menos 10 caracteres.</ngb-alert>
+          </p>
+        </div>
+      <div class="col-sm-12" *ngIf="surveyForm.controls.email.invalid && (surveyForm.controls.email.dirty || surveyForm.controls.email.touched)">
+          <p *ngIf="surveyForm.controls.email.errors?.required">
+            <ngb-alert [dismissible]="false" type="danger">El email es requerido.</ngb-alert>
+          </p>
+          <p *ngIf="surveyForm.controls.email.errors?.minlength">
+            <ngb-alert [dismissible]="false" type="danger">El email debe tener al menos 2 caracteres.</ngb-alert>
+          </p>
+        </div>
+        <div class="col-sm-12" *ngIf="surveyForm.controls.createdDate.invalid && (surveyForm.controls.createdDate.dirty || surveyForm.controls.createdDate.touched)">
+          <p *ngIf="surveyForm.controls.createdDate.errors?.required">
+            <ngb-alert [dismissible]="false" type="danger">El día de la encuesta es requerida.</ngb-alert>
+          </p>
+        </div>
       </div>
-
-      {{ surveyForm.value | json }}
     </form>
   </div>
 </div>

@@ -32,7 +32,7 @@ export class SurveysService {
   }
 
   getNewSurvey(): Observable<Survey> {
-    return of<Survey>(new Survey(null));
+    return of<Survey>(new Survey(undefined));
   }
   
   save(entity: Survey): Promise<Survey> {
