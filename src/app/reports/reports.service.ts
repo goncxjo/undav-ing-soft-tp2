@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Report } from '../models/report';
 import { Survey } from '../models/survey';
-import { SurveyService } from '../surveys/survey.service';
+import { SurveysService } from '../surveys/surveys.service';
 import * as _ from 'lodash'
 
 @Injectable({
@@ -11,12 +11,12 @@ export class ReportsService {
   private baseRoute: string;
 
   constructor(
-    private surveyService: SurveyService
+    private SurveysService: SurveysService
   ) { 
   }
 
   async getReport(fromDate: Date, toDate: Date): Promise<any> {
-    let data = await this.surveyService.getSurveysAsPromise()
+    let data = await this.SurveysService.getSurveysAsPromise()
 
     let report = new Report();
     const surveys = _.map(data, (s: any) => new Survey(s)).filter((s: Survey) => fromDate <= s.createdDate && s.createdDate <= toDate);

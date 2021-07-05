@@ -1,7 +1,7 @@
 {
   "surveys": [
     {
-      "id": 1,
+      "id": "10b597ee-91fe-4f5b-bc5e-43f84d0820bd",
       "name": "Tatiana",
       "surname": "Della Fanta",
       "age": 27,
@@ -15,7 +15,7 @@
       "modifiedDate": ""
     },
     {
-      "id": 2,
+      "id": "11bb8409-60e9-4f3d-9ab7-9812fbd25f13",
       "name": "Dora",
       "surname": "Gonzalez",
       "age": 55,
@@ -27,7 +27,7 @@
       "modifiedDate": ""
     },
     {
-      "id": 3,
+      "id": "bc6bb8fa-cdd3-4e19-9b5d-4dc4f5300f89",
       "name": "Nani",
       "surname": "Pakinov",
       "age": 30,
@@ -42,7 +42,7 @@
       "modifiedDate": ""
     },
     {
-      "id": 4,
+      "id": "b5b9fe15-1214-45d5-9fcd-d5bc31c8046f",
       "name": "Fernan",
       "surname": "Motola",
       "age": 22,
@@ -57,7 +57,7 @@
       "modifiedDate": ""
     },
     {
-      "id": 5,
+      "id": "1c723e68-4fd3-432e-95db-d6e29003d7ab",
       "name": "Marie",
       "surname": "Villalfalfa",
       "age": 29,
@@ -86,5 +86,30 @@
       "details": "Puede generar reportes"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": "0abbd6f5-81ab-45a4-8166-a224908fddd4",
+      "email": "gmoreira@undav-soluciones.com.ar",
+      "password": "$2a$10$D7rs.8X8Dk3TlVNVVbnsgOzFtBvVLhFgRZVPJq3xF0F2IlWKIyyHu",
+      "firstName": "Gonzalo",
+      "lastName": "Moreira",
+      "roleId": "46664ea7-89b4-4a09-af52-86184d35afb8"
+    },
+    {
+      "id": "8bb01e0c-86c8-4a9d-a3b8-0ffd5ce90186",
+      "email": "clicciardello@undav-soluciones.com.ar",
+      "password": "$2a$10$xLB9aGRzl/rkMXqoDElfN./3ZoHtBakq.fk/hddk.YsJwCF8izuwK",
+      "firstName": "Cristian",
+      "lastName": "Licciardello",
+      "roleId": "46664ea7-89b4-4a09-af52-86184d35afb8"
+    },
+    {
+      "id": "6c6088cf-28c8-4791-9150-8999b6a42664",
+      "email": "jmagnone@undav-soluciones.com.ar",
+      "password": "$2a$10$C7gWFjE6G2cFKghlHGK8AuohZNbbr4sQHrbavgOGaGJn5TEgDuJQO",
+      "firstName": "Jonathan",
+      "lastName": "Magnone",
+      "roleId": "46664ea7-89b4-4a09-af52-86184d35afb8"
+    }
+  ]
 }

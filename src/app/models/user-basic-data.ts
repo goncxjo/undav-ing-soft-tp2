@@ -2,7 +2,7 @@ import { Md5 } from "ts-md5";
 import { User } from "./user";
 
 export class UserBasicData {
-    id: number;
+    id: string;
     email: string;
     firstName: string;
     lastName: string;

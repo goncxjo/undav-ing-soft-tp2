@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RolesAdminComponent } from './roles-admin/roles-admin.component';
-import { RolesEditComponent } from './roles-edit/roles-edit.component';
+import { UsersAdminComponent } from './users-admin/users-admin.component';
+import { UsersEditComponent } from './users-edit/users-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
-import { RolesRoutingModule } from './roles-routing.module';
-import { RolesSelectorComponent } from './roles-selector/roles-selector.component';
+import { UsersRoutingModule } from './users-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    RolesAdminComponent,
-    RolesEditComponent,
-    RolesSelectorComponent,
+    UsersAdminComponent,
+    UsersEditComponent,
   ],
   imports: [
     FormsModule,
@@ -22,7 +20,7 @@ import { RolesSelectorComponent } from './roles-selector/roles-selector.componen
     CommonModule,
     SharedModule,
     LayoutModule,
-    RolesRoutingModule
+    UsersRoutingModule
   ]
 })
-export class RolesModule { }
+export class UsersModule { }

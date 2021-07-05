@@ -15,7 +15,7 @@ export class Survey {
         this.modifiedDate = new Date(rawSurvey.modifiedDate || new Date());
     }
 
-    id: 1;
+    id: string;
     name: string;
     surname: string;
     age: number;

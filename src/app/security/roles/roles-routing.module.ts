@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RolesAdminComponent } from './roles-admin/roles-admin.component';
-import { GetRolesListResolver } from '../get-roles-list.resolver';
-import { GetRoleResolver } from '../get-role-resolver';
+import { GetRolesListResolver } from './get-roles-list.resolver';
+import { GetRoleResolver } from './get-role-resolver';
 import { RolesEditComponent } from './roles-edit/roles-edit.component';
 import { AuthGuardService as AuthGuard } from '../../auth/auth-guard.service';
-import { GetNewRoleResolver } from '../get-new-role-resolver';
+import { GetNewRoleResolver } from './get-new-role-resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: 'admin' },

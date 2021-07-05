@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Role } from '../../models/role';
 import * as uuid from 'uuid';
 import { of } from 'rxjs';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,12 @@ export class RolesService {
   getById(id): Observable<Role> {
     const url = `${this.baseRoute}/${id}`;
     return this.http.get<Role>(url);
+  }
+
+  getRolesByIds(ids: string[]): Observable<Role[]> {
+    const rolesIds = _.map(ids, (id: string) => { return `id=${id}`}).join('&');
+    const url = `${this.baseRoute}?${rolesIds}`;
+    return this.http.get<Role[]>(url);
   }
 
   getNewRole(): Observable<Role> {

@@ -1,1 +1,62 @@
-<p>edit works!</p>
+<div class="row mb-2">
+    <h3>
+      {{ title }}
+    </h3>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="roleForm">
+  
+        <div class="form-row">
+          <input type="hidden" name="id" formControlName="id">
+          <div class="form-group col-md-6">
+            <label for="name">Nombre/s</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="Nombre/s del usuario...">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="details">Apellido/s</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Apellido/s del usuario...">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="details">Rol</label>
+            <input type="text" class="form-control" id="role" formControlName="role" placeholder="Rol del usuario...">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="name">Email</label>
+            <input type="text" class="form-control" id="email" formControlName="email" placeholder="Correo electrónico del usuario...">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="details">Contraseña</label>
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Contraseña del usuario...">
+          </div>
+        </div>
+  
+        <div class="form-row mb-3">
+          <div class="col">
+            <button class="btn btn-primary" (click)="goBack()">
+              <i class="fas fa-arrow-left"></i> Cancelar
+            </button>
+            <button class="ml-2 btn btn-primary" (click)="saveEntity()" [disabled]="readonly || roleForm.invalid">
+              <i class="fas fa-save"></i> Guardar
+            </button>
+          </div>
+        </div>
+  
+        <!-- TODO: mejorar esto con un loop -->
+        <div class="form-row">
+          <div class="col-sm-12" *ngIf="roleForm.controls.firstName.invalid && (roleForm.controls.firstName.dirty || roleForm.controls.firstName.touched)">
+            <p *ngIf="roleForm.controls.firstName.errors?.required">
+              <ngb-alert [dismissible]="false" type="danger">El nombre es requerido.</ngb-alert>
+            </p>
+            <p *ngIf="roleForm.controls.firstName.errors?.minlength">
+              <ngb-alert [dismissible]="false" type="danger">El nombre debe tener al menos 2 caracteres.</ngb-alert>
+            </p>
+          </div>
+
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  

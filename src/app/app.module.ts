@@ -16,6 +16,7 @@ import { SecurityModule } from './security/security.module';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ErrorModule } from './error/error.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     BrowserAnimationsModule,
     NgbModule,
     SecurityModule,
+    ErrorModule,
     ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [

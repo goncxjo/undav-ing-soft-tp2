@@ -20,7 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule),
   },
   { path: 'admin', redirectTo: '/', pathMatch: 'full', canActivate: [AuthGuard] },
-  // { path: '**', redirectTo: '/', pathMatch: 'full' },
+  { 
+    path: '**',
+    loadChildren: () => import('./error/error.module').then(m => m.ErrorModule),
+  },
 ];
 
 @NgModule({

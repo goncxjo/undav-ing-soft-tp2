@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Role } from '../models/Role';
-import { RolesService } from './roles/roles.service';
+import { Role } from "src/app/models/role";
+import { RolesService } from "./roles.service";
 
 @Injectable()
 export class GetRolesListResolver implements Resolve<Observable<Role[]>> {
